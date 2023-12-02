@@ -29,7 +29,7 @@ const Home = () => {
           >
             Hello! My name is Elisha Day and I am Full Stack Blockchain Engineer
           </motion.p>
-          <div className="flex justify-center xl:hidden relative">
+          <div className="flex z-10 justify-center xl:hidden relative">
             <ProjectsBtn />
           </div>
           <motion.div
@@ -37,7 +37,7 @@ const Home = () => {
             initial="hidden"
             animate="show"
             exit="hidden"
-            className="hidden xl:flex"
+            className="hidden z-10 xl:flex"
           >
             {" "}
             <ProjectsBtn />{" "}
