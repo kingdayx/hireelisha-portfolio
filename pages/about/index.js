@@ -97,7 +97,7 @@ const aboutData = [
 ];
 
 const About = () => {
-  const [index, setIndex] = useState();
+  const [index, setIndex] = useState(1);
   console.log(aboutData[1].info[1].title);
   return (
     <div className="h-full bg-primary/30 py-32 text-center xl:text-left">
@@ -133,10 +133,12 @@ const About = () => {
             })}
           </div>
           <div>
-            {aboutData.map((item, itemIndex) => {
+            {aboutData[index].info.map((item, itemIndex) => {
               return (
                 <div key={itemIndex}>
-                  <div> {item.info[itemIndex].title} </div>
+                  <div>
+                    <div>{item.title}</div>
+                  </div>
                 </div>
               );
             })}
