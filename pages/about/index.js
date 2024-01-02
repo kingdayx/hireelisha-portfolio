@@ -38,7 +38,15 @@ const aboutData = [
         ],
       },
       {
-        title: "UI/UX Design",
+        title: "Blockchain",
+        icons: [
+          <FaFigma key={8} />,
+          <SiAdobexd key={9} />,
+          <SiAdobephotoshop key={10} />,
+        ],
+      },
+      {
+        title: "Backend",
         icons: [
           <FaFigma key={8} />,
           <SiAdobexd key={9} />,
@@ -47,33 +55,17 @@ const aboutData = [
       },
     ],
   },
-  {
-    title: "awards",
-    info: [
-      {
-        title: "Webby Awards - Honoree",
-        stage: "2011 - 2012",
-      },
-      {
-        title: "Adobe Design Achievement Awards - Finalist",
-        stage: "2009 - 2010",
-      },
-    ],
-  },
+
   {
     title: "experience",
     info: [
       {
-        title: "UX/UI Designer - XYZ Company",
-        stage: "2012 - 2023",
+        title: "Full Stack Blockchain Engineer - Daotec Industries - freelance",
+        stage: "2019 - Present",
       },
       {
-        title: "Web Developer - ABC Agency",
-        stage: "2010 - 2012",
-      },
-      {
-        title: "Intern - DEF Corporation",
-        stage: "2008 - 2010",
+        title: "Lead Mobile Software Engineer - Doeshi",
+        stage: "2020 - Present",
       },
     ],
   },
@@ -81,24 +73,30 @@ const aboutData = [
     title: "credentials",
     info: [
       {
-        title: "Web Development - ABC University, LA, CA",
-        stage: "2011",
+        title: "Full Stack Web Development - Team Treehouse",
+        stage: "2017-2018",
       },
       {
-        title: "Computer Science Diploma - AV Technical Institute",
-        stage: "2009",
+        title: "Zero to Mastery Academy",
+        stage: "2021",
       },
       {
-        title: "Certified Graphic Designer - ABC Institute, Los Angeles, CA",
-        stage: "2006",
+        title:
+          "Udemy - Ethereum and Solidity the complete developers guide, solidity",
+        stage: "2017",
       },
     ],
   },
 ];
 
 const About = () => {
-  const [index, setIndex] = useState(1);
-  console.log(aboutData[1].info[1].title);
+  const [index, setIndex] = useState(0);
+
+  const handleClick = (itemIndex) => {
+    setIndex(itemIndex);
+    window.location.hash = aboutData[itemIndex].title.toLowerCase();
+  };
+
   return (
     <div className="h-full bg-primary/30 py-32 text-center xl:text-left">
       <Circles />
@@ -111,38 +109,39 @@ const About = () => {
       >
         <Avatar />
       </motion.div>
-      <div className="container mx-auto h-full flex flex-col items-center xl:flex-row gap-x-6">
-        <div>text</div>
+      <div className="z-40 mt-20 container mx-auto h-full flex flex-col items-center xl:flex-row gap-x-6">
         <div>
+          {" "}
           <div className="flex gap-x-4 xl:gap-x-8 mx-auto xl:mx-0 mb-4">
-            {aboutData.map((item, itemIndex) => {
-              return (
-                <div
-                  key={itemIndex}
-                  className={`${
-                    index === itemIndex &&
-                    "text-accent after:w-[100%] after:bg-accent after:transition-all after:duration-300"
-                  } cursor-pointer capatilize xl:text-lg 
-            relative after:w-8 after:h-[2px]
-             after:bg-white after:absolute after:-bottom-1 after:left-0`}
-                  onClick={() => setIndex(itemIndex)}
-                >
-                  {item.title}
-                </div>
-              );
-            })}
+            {aboutData.map((item, itemIndex) => (
+              <a
+                key={itemIndex}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleClick(itemIndex);
+                }}
+                className={`${
+                  index === itemIndex &&
+                  "text-accent after:w-[100%] after:bg-accent after:transition-all after:duration-300"
+                } cursor-pointer capatilize xl:text-lg 
+          relative after:w-8 after:h-[2px]
+           after:bg-white after:absolute after:-bottom-1 after:left-0`}
+                href={`#${aboutData[itemIndex].title.toLowerCase()}`}
+              >
+                {item.title}
+              </a>
+            ))}
           </div>
           <div>
-            {aboutData[index].info.map((item, itemIndex) => {
-              return (
-                <div key={itemIndex}>
-                  <div>
-                    <div>{item.title}</div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+            {aboutData.map((item, itemIndex) => (
+              <div key={itemIndex} id={item.title.toLowerCase()}>
+                {index === itemIndex &&
+                  item.info.map((infoItem, infoIndex) => (
+                    <p key={infoIndex}>{infoItem.title}</p>
+                  ))}
+              </div>
+            ))}
+          </div>{" "}
         </div>
       </div>
     </div>
