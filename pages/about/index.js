@@ -23,7 +23,7 @@ import { fadeIn } from "../../variants";
 //  data
 const aboutData = [
   {
-    title: "skills",
+    title: "Skills",
     info: [
       {
         title: "Web Development",
@@ -57,10 +57,10 @@ const aboutData = [
   },
 
   {
-    title: "experience",
+    title: "Experience",
     info: [
       {
-        title: "Full Stack Blockchain Engineer - Daotec Industries - freelance",
+        title: "Full Stack Blockchain Engineer - Daotec Industries - Freelance",
         stage: "2019 - Present",
       },
       {
@@ -70,7 +70,7 @@ const aboutData = [
     ],
   },
   {
-    title: "credentials",
+    title: "Credentials",
     info: [
       {
         title: "Full Stack Web Development - Team Treehouse",
